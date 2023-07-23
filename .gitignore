@@ -1,0 +1,12 @@
+.vscode/*
+!.vscode/tasks.json
+!.vscode/settings.json
+
+# Needless SDK's shit.
+bin/
+obj/
+
+scripts/utils/efc.cs
+scripts/utils/KTZ hunt.cs
+scripts/utils/RSM.cs
+scripts/utils/WicoIGC _wicoIGC.cs

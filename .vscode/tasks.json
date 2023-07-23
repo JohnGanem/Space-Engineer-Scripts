@@ -1,0 +1,75 @@
+{
+  // See about tasks.json https://go.microsoft.com/fwlink/?LinkId=733558
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Export Space Engineers script",
+      "type": "process",
+      "command": "${workspaceFolder}\\utils\\export.bat",
+      "args": [
+        "${fileWorkspaceFolder}\\${relativeFileDirname}"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Create Space Engineers script",
+      "type": "process",
+      "command": "${workspaceFolder}\\utils\\create.bat",
+      "args": [
+        "${input:dirname}"
+      ],
+      "problemMatcher": []
+    },
+    {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "build",
+            "${workspaceFolder}/SpaceEngineers.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "publish",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "publish",
+            "${workspaceFolder}/SpaceEngineers.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "watch",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "watch",
+            "run",
+            "--project",
+            "${workspaceFolder}/SpaceEngineers.csproj"
+        ],
+        "problemMatcher": "$msCompile"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "dirname",
+      "type": "promptString",
+      "description": "The script name to create"
+    }
+  ]
+}
